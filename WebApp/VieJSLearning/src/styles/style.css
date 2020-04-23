@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css?family=Cormorant+Infant:400,700&display=swap&subset=cyrillic,cyrillic-ext');
+@import 'https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css';
+@font-face{
+    font-family: 'BadScript-Regular';
+    src: url('../fonts/BadScript-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face{
+    font-family: 'Caveat';
+    src: url('../fonts/Caveat-Bold.ttf');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face{
+    font-family: 'Caveat';
+    src: url('../fonts/Caveat-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+/*делаем одинаковым шрифт для всех. Шрифт берем "под ногами"*/
+*{
+    font-family: 'Caveat', serif;
+    font-weight: bold;
+}
+/*для заголовка берем другой шрифт. Шрифт тянем на лету GoogleFonts https://fonts.google.com/*/
+.registrationTitle{
+    font-family: 'Cormorant Infant', serif;
+}
+.text-center {
+    text-align: center;
+}
+.text-right {
+    text-align: end !important;
+    margin: 1px 10px 1px 10px;
+}
+.text-left {
+    text-align: start !important;
+    margin: 1px 10px 1px 10px;
+}
+.fs-container{
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+}
+th, tr{
+    text-align: start;
+}

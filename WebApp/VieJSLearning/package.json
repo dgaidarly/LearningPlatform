@@ -1,0 +1,54 @@
+{
+  "name": "VieJSLearning",
+  "version": "1.0.0",
+  "description": "\"# VieJSLearning\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "vue-cli-service build",
+    "serve": "vue-cli-service serve"
+  },
+  "dependencies": {
+    "express": "*",
+    "sass": "*",
+    "sass-loader": "*",
+    "style-loader": "^1.1.3",
+    "vue": "*",
+    "vue-router": "*",
+    "vuetify": "*",
+    "vuelidate": "^0.7.5",
+    "Microsoft.NETCore.App": {
+      "type": "platform",
+      "version": "*"
+    }
+  },
+  "frameworks": {
+    "netcoreapp3.1": {
+      "projectReferences": {}
+    }
+  },
+  "devDependencies": {
+    "@vue/cli": "*",
+    "@vue/cli-service": "*",
+    "buble": "*",
+    "buble-loader": "*",
+    "css-loader": "^3.4.2",
+    "html-webpack-plugin": "*",
+    "vue-loader": "*",
+    "vue-template-compiler": "*",
+    "vuelidate": "^0.7.5",
+    "webpack": "*",
+    "webpack-cli": "^3.3.10"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dgaidarly/VieJSLearning.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dgaidarly/VieJSLearning/issues"
+  },
+  "homepage": "https://github.com/dgaidarly/VieJSLearning#readme"
+}
