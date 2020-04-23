@@ -34,6 +34,9 @@
                                 label="Пароль"
                                 required
                         />
+                        <v-text-field
+                                v-model="helloWord"
+                        />
                         <v-btn
                                 @click="submit"
                                 width="400px"
@@ -64,7 +67,7 @@
 </template>
 
 <script>
-    import {required, maxLength, email} from 'vuelidate/lib/validators'
+    import axios from 'axios'
 
     export default {
         data: () => ({
@@ -88,6 +91,7 @@
                 v => !!v || 'Password is required'
             ],
             users: [],
+            helloWord:'',
             headers: [
                 {text: 'Имя', align: 'left', sortable: false, value: 'name'},
                 {text: 'Фамилия', value: 'surname'},
@@ -121,7 +125,18 @@
             clear(){
                 this.$refs.form.reset();
                 this.$refs.form.resetValidation();
+            },
+            loadHelloWorld() {
+                axios
+                    .get('WeatherForecast/HelloWorld')
+                    .then(response => {
+                        this.helloWord = response.data;
+                    });
             }
+        },
+
+        created() {
+            this.loadHelloWorld();
         }
     };
 </script>
