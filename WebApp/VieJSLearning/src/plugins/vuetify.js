@@ -1,11 +1,27 @@
 import Vue from 'vue';
-import Vuetify, { VSnackbar, VBtn, VIcon, VTextField, VSimpleTable,VForm,VContainer,VRow,VCol, VDataTable,VCard } from 'vuetify/lib';
+import Vuetify, {
+    VApp, VNavigationDrawer, VBtn, VIcon, VTextField, VSimpleTable, VForm, VContainer, VRow, VCol, VDataTable, VCard, VCardTitle, VSpacer
+    , VList
+    , VListItem
+    , VListItemIcon
+    , VListItemContent
+    , VListItemTitle
+    , VContent
+} from 'vuetify/lib';
 import ru from 'vuetify/es5/locale/ru';
 import colors from 'vuetify/lib/util/colors';
 Vue.use(Vuetify, {
     components: {
-        VBtn,
-        VIcon,
+        VApp,
+        VNavigationDrawer,
+        VList
+        , VListItem
+        , VListItemIcon
+        , VListItemContent
+        , VListItemTitle
+        , VBtn
+        , VContent
+        , VIcon,
         VTextField,
         VSimpleTable,
         VForm,
@@ -13,7 +29,9 @@ Vue.use(Vuetify, {
         VRow,
         VCol,
         VDataTable,
-        VCard
+        VCard,
+        VCardTitle,
+        VSpacer
     }
 });
 

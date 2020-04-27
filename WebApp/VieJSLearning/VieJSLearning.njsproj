@@ -35,7 +35,11 @@
     <Content Include="package-lock.json" />
     <Content Include="package.json" />
     <Content Include="README.md" />
+    <Content Include="src\pages\registration\Index.vue" />
     <Content Include="src\plugins\vuetify.js" />
+    <Content Include="src\router.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="src\styles\style.css" />
     <Content Include="static\example.html" />
     <Content Include="static\style.css" />
@@ -44,15 +48,15 @@
     <Folder Include="config\" />
     <Folder Include="dist\" />
     <Folder Include="src\" />
-    <Folder Include="src\assets\" />
-    <Folder Include="src\components\" />
     <Folder Include="src\fonts\" />
+    <Folder Include="src\pages\" />
+    <Folder Include="src\pages\registration\" />
     <Folder Include="src\plugins\" />
     <Folder Include="src\styles\" />
     <Folder Include="static\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="src\components\Hello.vue" />
+    <Content Include="src\pages\UserRegistration.vue" />
     <Content Include="src\fonts\BadScript-Regular.ttf" />
     <Content Include="src\fonts\Caveat-Bold.ttf" />
     <Content Include="src\fonts\Caveat-Regular.ttf" />
