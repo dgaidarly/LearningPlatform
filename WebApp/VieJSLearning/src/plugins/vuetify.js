@@ -7,6 +7,7 @@ import Vuetify, {
     , VListItemContent
     , VListItemTitle
     , VContent
+    , VSlot
 } from 'vuetify/lib';
 import ru from 'vuetify/es5/locale/ru';
 import colors from 'vuetify/lib/util/colors';
@@ -32,6 +33,7 @@ Vue.use(Vuetify, {
         VCard,
         VCardTitle,
         VSpacer
+        , VSlot
     }
 });
 

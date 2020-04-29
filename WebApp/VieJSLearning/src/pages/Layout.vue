@@ -24,7 +24,7 @@
         </v-navigation-drawer>
         <v-content>
             <v-container fluid>
-                <slot></slot>
+                <router-view></router-view>
             </v-container>
         </v-content>
     </v-app>
@@ -37,7 +37,7 @@
                 {
                     title: 'Регистрация',
                     icon: 'mdi-account-plus',
-                    link: '/registration',
+                    link: '/registered',
                 }
             ],
         }),

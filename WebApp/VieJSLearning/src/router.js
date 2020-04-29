@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Registration from '@/pages/registration/Index';
+import Registration from '@/pages/registration/Edit';
+import Registered from '@/pages/registration/Index';
 
 Vue.use(Router);
 
@@ -8,18 +9,30 @@ const router = new Router({
     mode: 'history',
     routes: [
         {
+            path: '/registered',
+            name: 'registered',
+            component: Registered,
+            meta: {
+                title: 'РЎРїРёСЃРѕРє РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№'
+            }
+        },
+        {
             path: '/registration',
             name: 'registration',
             component: Registration,
             meta: {
-                title: 'Регистрация'
+                title: 'Р РµРіРёСЃС‚СЂР°С†РёСЏ'
             }
+        },
+        {
+            path: '',
+            redirect: 'registered'
         }
     ]
 });
 
 router.beforeEach((to, from, next) => {
-    document.title = `Регистрация ${
+    document.title = `Р РµРіРёСЃС‚СЂР°С†РёСЏ ${
         to.meta.title ? ' | ' + to.meta.title : ''
         }`;
     next();
