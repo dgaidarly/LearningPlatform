@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using VieJSLearning.Dal;
 using VieJSLearning.Dal.Entities;
 using VieJSLearning.Dal.Models;
-using VieJSLearning.Dal.Repositories;
 using VieJSLearning.Dal.Tools;
 
 namespace VieJSLearning.API.Controllers
@@ -24,37 +23,55 @@ namespace VieJSLearning.API.Controllers
         [HttpGet("GetAll")]
         public IEnumerable<User> GetAll()
         {
-            var user = Get();
-            var userEntity = new UserEntity
+            using (var dal = new DalWrapper())
             {
-                FirstName = user.FirstName,
-                SecondName = user.SecondName,
-                Mail = user.Mail
-            };
-            userEntity.SetId();
-
-            var repo = new GenericRepository<UserEntity>();
-            repo.Get
-
-            var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new User
+                var users = dal.UserRepository.Get()
+                    .Select(x=>new User
                 {
-                    FirstName = $"Федор{rng.Next(1, 5)}",
-                    SecondName = $"Иванов{rng.Next(1, 5)}",
-                    Mail = $"test{rng.Next(1, 5)}@gmail.com"
-                })
-                .ToArray();
+
+                    FirstName = x.FirstName,
+                    SecondName = x.SecondName,
+                    Mail = x.Mail
+                });
+                return users;
+            }
         }
 
         [HttpGet]
-        public User Get()
+        public User Get(string id)
         {
-            return new User
+            using (var dal = new DalWrapper())
             {
-                FirstName = "Федор",
-                SecondName = "Иванов",
-                Mail = "test1@gmail.com"
-            };
+                var users = dal.UserRepository
+                    .Get(x => x.Id == id)
+                    .Select(x => new User
+                    {
+                        Id = x.Id,
+                        FirstName = x.FirstName,
+                        SecondName = x.SecondName,
+                        Mail = x.Mail
+                    });
+                return users.FirstOrDefault();
+            }
         }
+
+        [HttpPut]
+        public void SaveUser(User user)
+        {
+            using (var dal = new DalWrapper())
+            {
+                var userEntity = new UserEntity
+                {
+                    FirstName = user.FirstName,
+                    SecondName = user.SecondName,
+                    Mail = user.Mail,
+                    Password = user.Password
+                };
+                userEntity.SetId();
+                dal.UserRepository
+                    .Insert(userEntity);
+            }
+        }
+
     }
 }

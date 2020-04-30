@@ -3,9 +3,9 @@ using VieJSLearning.Dal.Entities;
 
 namespace VieJSLearning.Dal
 {
-    internal class VieJSLearningContext : DbContext
+    public class VieJSLearningContext : DbContext
     {
-        public virtual DbSet<UserEntity> Users { get; set; }
+        public DbSet<UserEntity> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionbuilder)
         {

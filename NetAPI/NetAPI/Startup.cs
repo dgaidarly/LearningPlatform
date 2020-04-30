@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using VieJSLearning.Dal;
 
 namespace VieJSLearning.API
 {
@@ -52,6 +53,9 @@ namespace VieJSLearning.API
             {
                 endpoints.MapControllers();
             });
+
+            var dal = new DalWrapper();
+            dal.Migration();
         }
     }
 }

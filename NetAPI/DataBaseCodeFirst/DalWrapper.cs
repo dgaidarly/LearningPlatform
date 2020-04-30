@@ -1,4 +1,7 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.Extensions.DependencyInjection;
 using VieJSLearning.Dal.Entities;
 using VieJSLearning.Dal.Repositories;
 
@@ -9,9 +12,19 @@ namespace VieJSLearning.Dal
         private readonly VieJSLearningContext context;
         private IGenericRepository<UserEntity> userRepository;
 
+        public VieJSLearningContext GetContext => context;
+
         public DalWrapper()
         {
             context=new VieJSLearningContext();
+        }
+
+        public IGenericRepository<UserEntity> UserRepository => userRepository ?? new GenericRepository<UserEntity>(context);
+
+        public void Migration()
+        {
+            var mgr = context.GetInfrastructure().GetService<IMigrator>();
+            mgr.Migrate();
         }
         public void Save()
         {
@@ -39,10 +52,5 @@ namespace VieJSLearning.Dal
             GC.SuppressFinalize(this);
         } 
         #endregion
-    }
-
-    public interface IDalWrapper : IDisposable
-    {
-        void Save();
     }
 }

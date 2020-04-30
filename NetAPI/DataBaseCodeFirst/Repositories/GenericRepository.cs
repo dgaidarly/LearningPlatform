@@ -12,9 +12,9 @@ namespace VieJSLearning.Dal.Repositories
         private VieJSLearningContext context;
         private DbSet<TEntity> dbSet;
 
-        public GenericRepository()
+        public GenericRepository(VieJSLearningContext context)
         {
-            this.context = new VieJSLearningContext();
+            this.context = context;
             this.dbSet = context.Set<TEntity>();
         }
 
