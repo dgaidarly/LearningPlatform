@@ -9,20 +9,21 @@
     "serve": "vue-cli-service serve"
   },
   "dependencies": {
+    "Microsoft.NETCore.App": {
+      "type": "platform",
+      "version": "*"
+    },
+    "axios": "*",
     "express": "*",
     "sass": "*",
     "sass-loader": "*",
     "style-loader": "^1.1.3",
-    "axios": "*",
     "vue": "*",
-    "vue-router": "*",
-    "vuetify": "*",
     "vue-axios": "*",
-    "vuelidate": "^0.7.5",
-    "Microsoft.NETCore.App": {
-      "type": "platform",
-      "version": "*"
-    }
+    "vue-notification": "^1.3.20",
+    "vue-router": "*",
+    "vuelidate": "*",
+    "vuetify": "*"
   },
   "frameworks": {
     "netcoreapp3.1": {
@@ -38,8 +39,6 @@
     "html-webpack-plugin": "*",
     "vue-loader": "*",
     "vue-template-compiler": "*",
-    "vue-axios": "*",
-    "vuelidate": "^0.7.5",
     "webpack": "*",
     "webpack-cli": "^3.3.10"
   },

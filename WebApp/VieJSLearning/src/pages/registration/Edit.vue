@@ -36,6 +36,7 @@
             </v-form>
         </v-row>
     </div>
+    
 </template>
 
 <script>
@@ -56,12 +57,13 @@
             ],
             email: '',
             emailRules: [
-                v => (v === '' || /.+@.+\..+/.test(v)) || 'E-mail must be valid',
+                v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
             ],
             password: '',
             passwordRules: [
                 v => !!v || 'Password is required'
-            ]
+            ],
+            user: ''
         }),
 
         computed: {
@@ -72,31 +74,37 @@
 
         methods: {
             submit(event) {
-                let user = {
-                    name: this.name,
-                    surname: this.surname,
-                    email: this.email,
+                this.user = {
+                    firstName: this.name,
+                    secondName: this.surname,
+                    mail: this.email,
                     password: this.password,
                 };
-                this.users.push(user);
-                this.clear();
+                this.saveUser();
                 event.preventDefault();
             },
             clear() {
                 this.$refs.form.reset();
                 this.$refs.form.resetValidation();
             },
-            loadHelloWorld() {
+            saveUser() {
                 axios
-                    .get('WeatherForecast/HelloWorld')
+                    .post('Registration', this.user)
                     .then(response => {
-                        this.helloWord = response.data;
+                        if (response.data !== '') {
+                            this.$notify({
+                                type: 'error',
+                                group: 'userRegistration',
+                                title: 'Ошибка!',
+                                text: response.data
+                            });
+                        }
+                        else {
+                            this.$router.push('/registered');
+                            this.clear();
+                        }
                     });
             }
-        },
-
-        created() {
-            this.loadHelloWorld();
         }
     };
 </script>

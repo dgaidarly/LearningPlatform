@@ -2,6 +2,7 @@
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using VieJSLearning.Cryptography;
 using VieJSLearning.Dal;
 using VieJSLearning.Dal.Entities;
 using VieJSLearning.Dal.Models;
@@ -55,21 +56,28 @@ namespace VieJSLearning.API.Controllers
             }
         }
 
-        [HttpPut]
-        public void SaveUser(User user)
+        [HttpPost]
+        public string SaveNewUser(User user)
         {
             using (var dal = new DalWrapper())
             {
+                var isEmailExist = dal.UserRepository.Get(x => x.Mail == user.Mail).Any();
+                if (isEmailExist)
+                {
+                    return "Указанный e-mail уже используется.";
+                }
                 var userEntity = new UserEntity
                 {
                     FirstName = user.FirstName,
                     SecondName = user.SecondName,
                     Mail = user.Mail,
-                    Password = user.Password
+                    Password = Encryptor.Instance.GetEncryptedPass(user.Password)
                 };
                 userEntity.SetId();
                 dal.UserRepository
                     .Insert(userEntity);
+                dal.Save();
+                return string.Empty;
             }
         }
 

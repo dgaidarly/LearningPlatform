@@ -30,6 +30,8 @@ namespace VieJSLearning.API
                         //builder.WithOrigins("https://localhost:1338/"
                         //    , "https://localhost:44346/");
                         builder.AllowAnyOrigin();
+                        builder.AllowAnyMethod();
+                        builder.AllowAnyHeader();
                     });
             });
 

@@ -7,8 +7,11 @@ import Vuelidate from 'vuelidate'
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 import router from './router';
+import Notifications from 'vue-notification'
+
 Vue.use(Vuelidate);
 Vue.use(VueAxios, axios);
+Vue.use(Notifications);
 Vue.router = router;
 
 Vue.component('layout', Layout);
